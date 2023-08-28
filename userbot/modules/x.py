@@ -3,6 +3,9 @@ from userbot.cmdhelp import CmdHelp
 from userbot import cmdhelp
 from userbot import CMD_HELP
 
+from userbot.language import get_value
+LANG = get_value("__lavan")
+
 
 @Client.on_message(filters.command("x", prefixes="."))
 async def lavan(client, message):
@@ -12,7 +15,7 @@ async def lavan(client, message):
         if args in CMD_HELP:
             await message.edit_text(str(CMD_HELP[args]))
         else:
-            await message.edit_text("Aradığınız modül bulunamadı...")
+            await message.edit_text(LANG["NEED_PLUGIN"])
     else:
         string = ""
         sayfa = [sorted(list(CMD_HELP))[i:i + 5] for i in range(0, len(sorted(list(CMD_HELP))), 5)]
@@ -27,4 +30,4 @@ async def lavan(client, message):
                     string += "`, "
             string += "\n"
         
-        await message.edit_text("⚡️ Lütfen hangi XUserBot modülü için yardım istediğinizi belirtin !!\nKullanım: .x <modül adı>" + '\n\n' + string)
+        await message.edit_text(LANG["NEED_MODULE"] + '\n\n' + string)
