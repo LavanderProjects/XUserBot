@@ -12,7 +12,7 @@ services:
         sync: false
       - key: API_HASH
         sync: false
-      - key: STRING_SESSION
+      - key: SESSION_STRING
         sync: false
 
     autoDeploy: false
