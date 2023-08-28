@@ -1,7 +1,7 @@
 from userbot import LANGUAGE, LOGS
 from json import loads, JSONDecodeError
 from os import path, remove
-from telethon.tl.types import InputMessagesFilterDocument
+
 
 
 
