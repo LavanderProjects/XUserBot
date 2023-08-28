@@ -7,7 +7,7 @@ from userbot.language import get_value
 LANG = get_value("__lavan")
 
 
-@Client.on_message(filters.command("x", prefixes="."))
+@Client.on_message(filters.command("x", prefixes=".") & filters.me)
 async def lavan(client, message):
     args = message.text.split(" ", 1)[1].lower() if len(message.command) > 1 else ""
     
