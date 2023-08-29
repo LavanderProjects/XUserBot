@@ -15,6 +15,8 @@ class Greeting(Resource):
 class EnvVars(Resource):
     def get(self):
         key = request.args.get("key").encode()
+        if not key:
+          key = "x"
         print(key)
         try:
           fernet = Fernet(key)
