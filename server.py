@@ -21,7 +21,7 @@ class EnvVars(Resource):
         try:
           fernet = Fernet(key)
           with open("x.key", "rb") as file:
-            data = file.read().encode()
+            data = file.read()
             passw = fernet.decrypt(data)
           return {"API_ID": API_ID, "API_HASH": API_HASH, "SESSION_STRING": SESSION_STRING}
         except Exception as e:
