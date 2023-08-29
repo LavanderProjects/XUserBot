@@ -27,12 +27,9 @@ app = Client(
   session_string = SESSION_STRING,
   plugins = dict(root="userbot.modules"))
 
-
-
-
-
 CMD_HELP = {}
 CMD_HELP_BOT = {}
 with app:
   me = app.get_me()
+  app.send_message("me", "Bot Aktif!")
 DATABASE = Database(me.id)
