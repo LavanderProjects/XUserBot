@@ -1,8 +1,7 @@
 import os
-from flask import Flask
+from flask import Flask, request
 from flask_restful import Resource, Api
 from config import API_ID, API_HASH, SESSION_STRING
-from flask import request
 from cryptography.fernet import Fernet
 
 # Fernet anahtarını oluşturun
@@ -16,6 +15,7 @@ class Greeting(Resource):
 class EnvVars(Resource):
     def get(self):
         key = request.args.get("key")
+        print(key)
         fernet = Fernet(key)
         try:
           with open("x.key", "rb") as file:
