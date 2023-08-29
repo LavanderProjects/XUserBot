@@ -1,7 +1,8 @@
 from pyrogram import Client
 from config import API_ID, API_HASH, SESSION_STRING
-import os 
+import os
 from logging import basicConfig, getLogger, INFO, DEBUG
+from userbot.database import Database
 LOGS = getLogger(__name__)
 
 # Bot'un dili
@@ -28,3 +29,4 @@ app = Client(
 
 CMD_HELP = {}
 CMD_HELP_BOT = {}
+Db = Database()

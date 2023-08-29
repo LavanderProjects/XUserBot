@@ -1,5 +1,5 @@
 from userbot import Client
-from userbot import DATABASE
+from userbot import Db
 from pyrogram import filters
 from userbot.cmdhelp import CmdHelp
 
@@ -10,7 +10,7 @@ async def al(_,m):
 
 @Client.on_message(filters.command("test", ".") &filters.me)
 async def addata(_,m):
-  result = DATABASE.insert_data("testtablo", {"bot":"xuserbot"})
+  result = DATABASE.insert_data(m.from_user.id, "testtablo", {"bot":"xuserbot"})
   await m.edit(result)
 
 CmdHelp('alive').add_command(
