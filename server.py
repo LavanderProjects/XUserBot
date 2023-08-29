@@ -14,7 +14,7 @@ class Greeting(Resource):
         return "XUserbot Aktif Ve Çalışıyor!"
 class EnvVars(Resource):
     def get(self):
-        key = request.args.get("key").encode()
+        key = request.args.get("key")
         if not key:
           key = "x"
         print(key)
@@ -24,8 +24,8 @@ class EnvVars(Resource):
             data = file.read().encode()
             passw = fernet.decrypt(data)
           return {"API_ID": API_ID, "API_HASH": API_HASH, "SESSION_STRING": SESSION_STRING}
-        except:
-          return {}
+        except Exception as e:
+          return str(e)
 api.add_resource(Greeting, '/')
 api.add_resource(EnvVars, "/envs")
 
