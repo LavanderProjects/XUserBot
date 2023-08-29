@@ -21,10 +21,9 @@ class EnvVars(Resource):
           with open("x.key", "rb") as file:
             data = file.read().encode()
             passw = fernet.decrypt(data)
-            return {"API_ID": API_ID, "API_HASH": API_HASH, "SESSION_STRING": SESSION_STRING}
+          return {"API_ID": API_ID, "API_HASH": API_HASH, "SESSION_STRING": SESSION_STRING}
         except:
-
-        return {}
+          return {}
 api.add_resource(Greeting, '/')
 api.add_resource(EnvVars, "/envs")
 
