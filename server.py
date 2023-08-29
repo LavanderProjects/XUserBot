@@ -14,10 +14,10 @@ class Greeting(Resource):
         return "XUserbot Aktif Ve Çalışıyor!"
 class EnvVars(Resource):
     def get(self):
-        key = request.args.get("key")
+        key = request.args.get("key").encode()
         print(key)
-        fernet = Fernet(key)
         try:
+          fernet = Fernet(key)
           with open("x.key", "rb") as file:
             data = file.read().encode()
             passw = fernet.decrypt(data)
