@@ -2,7 +2,7 @@ from pyrogram import Client
 from config import API_ID, API_HASH, SESSION_STRING
 import os 
 from logging import basicConfig, getLogger, INFO, DEBUG
-
+from userbot.database import Database
 LOGS = getLogger(__name__)
 
 # Bot'un dili
@@ -11,9 +11,6 @@ LANGUAGE = os.environ.get("LANGUAGE", "DEFAULT").upper()
 if not LANGUAGE in ["EN", "TR", "AZ", "UZ", "DEFAULT"]:
   LOGS.info("Bilinmeyen bir dil yazdınız. Bundan dolayı DEFAULT kullanılıyor.")
   LANGUAGE = "DEFAULT"
-
-
-  
 
 
 
@@ -36,3 +33,6 @@ app = Client(
 
 CMD_HELP = {}
 CMD_HELP_BOT = {}
+with app:
+  me = app.get_me()
+DATABASE = Database(me.id)
