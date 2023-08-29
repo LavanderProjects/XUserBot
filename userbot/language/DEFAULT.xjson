@@ -7,6 +7,34 @@
         "__lavan": {
             "NEED_PLUGIN": "💻 Lütfen bir XUserBot modülü adı belirtin.",
             "NEED_MODULE": "XUserBot Module Helper \n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n⚡ Lütfen hangi XUserBot modülü için yardım istediğinizi belirtin !!\nKullanım: .x <modül adı>"
+        },
+        "ADMIN": {
+            "NEED_GROUP": "⚠️ Bu komutu kullanabilmek için bir grupta olmanız gerekiyor.",
+            "NEED_USER": "⚠️ Bu komutu kullanabilmek için bir kullanıcı belirtmeniz gerekli. (username/id)",
+            "ONLY_ONE": "⚠️ Bu komutu sadece bir kullanıcı için kullanabilirsiniz.",
+            "USER_NOT_FOUND": "⚠️ Kullanıcı bulunamadı.",
+            "ADD_FAILED": "⚠️ Kullanıcı eklenemedi.",
+            "ADD_SUCCESS": "✅ Kullanıcı eklendi.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "NEED_REPLY": "⚠️ Bu komutu kullanabilmek için bir resim veya videoya yanıt vermeniz gerekiyor.",
+            "SETG_PIC": "✅ Grup resmi değiştirildi.\n\n🪧 `{}`",
+            "SETG_FAILED": "⚠️ Grup resmi değiştirilemedi.",
+            "NEED_TITLE": "⚠️ Bu komutu kullanabilmek için bir başlık belirtmeniz gerekiyor.",
+            "SETG_T_FAILED": "⚠️ Grup başlığı değiştirilemedi.",
+            "SETG_TITLE": "✅ Grup başlığı değiştirildi.\n\n🪧 `{}`",
+            "PROMOTE_FAILED": "⚠️ Kullanıcı yönetici yapılamadı.",
+            "PROMOTE_SUCCESS": "✅ Kullanıcı yönetici yapıldı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "DEMOTE_FAILED": "⚠️ Kullanıcı yöneticilikten alınamadı.",
+            "DEMOTE_SUCCESS": "✅ Kullanıcı yöneticilikten alındı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "BAN_FAILED": "⚠️ Kullanıcı yasaklanamadı.",
+            "UNBAN_FAILED": "⚠️ Kullanıcının yasağı kaldırılamadı.",
+            "BAN_SUCCESS": "✅ Kullanıcı yasaklandı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "UNBAN_SUCCESS": "✅ Kullanıcının yasağı kaldırıldı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "KICK_FAILED": "⚠️ Kullanıcı gruptan atılamadı.",
+            "KICK_SUCCESS": "✅ Kullanıcı gruptan atıldı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "MUTE_FAILED": "⚠️ Kullanıcı susturulamadı.",
+            "MUTE_SUCCESS": "✅ Kullanıcı susturuldu.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "UNMUTE_FAILED": "⚠️ Kullanıcının susturması kaldırılamadı.",
+            "UNMUTE_SUCCESS": "✅ Kullanıcının susturması kaldırıldı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`"
         }
     }
 }
