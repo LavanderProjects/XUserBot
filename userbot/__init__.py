@@ -2,7 +2,6 @@ from pyrogram import Client
 from config import API_ID, API_HASH, SESSION_STRING
 import os 
 from logging import basicConfig, getLogger, INFO, DEBUG
-from userbot.database import Database
 LOGS = getLogger(__name__)
 
 # Bot'un dili
@@ -29,7 +28,3 @@ app = Client(
 
 CMD_HELP = {}
 CMD_HELP_BOT = {}
-with app:
-  me = app.get_me()
-  app.send_message("me", "Bot Aktif!")
-DATABASE = Database(me.id)
