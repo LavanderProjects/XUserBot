@@ -8,9 +8,11 @@ from userbot.cmdhelp import CmdHelp
 async def al(_,m):
   await m.edit("Bot is started!")
 
+
+
 @Client.on_message(filters.command("test", ".") &filters.me)
 async def addata(_,m):
-  result = DATABASE.insert_data(m.from_user.id, "testtablo", {"bot":"xuserbot"})
+  result = Db.insert_data(m.from_user.id, "testtablo", {"bot":"xuserbot"})
   await m.edit(result)
 
 CmdHelp('alive').add_command(
