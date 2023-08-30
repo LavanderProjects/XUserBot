@@ -16,13 +16,14 @@ async def update_command(_, m):
   if response.status_code == 200:
     await m.edit("`Repo Kontrolü Başarılı! Bot Güncelleniyor...`")
     for file, data in response.json().items():
-      with open("./userbot/modules/" + file + ".py", "w") as f:
+      with open("/userbot/modules/" + file + ".py", "w") as f:
         f.write(data)
     await asyncio.sleep(1)
+    await app.restart()
     await m.edit("`Bot Güncellendi!`")
-    url = "https://api.render.com/v1/services?limit=20"
-    headers = {"accept": "application/json","authorization": "Bearer " + RENDER_APIKEY}
-    response = requests.get(url, headers=headers)
-    servis = response.json()[0]["service"]
-    url = f"https://api.render.com/v1/services/{servis['id']}/restart"
-    response = requests.post(url, headers=headers)
+#    url = "https://api.render.com/v1/services?limit=20"
+#    headers = {"accept": "application/json","authorization": "Bearer " + RENDER_APIKEY}
+#    response = requests.get(url, headers=headers)
+#    servis = response.json()[0]["service"]
+#    url = f"https://api.render.com/v1/services/{servis['id']}/restart"
+#    response = requests.post(url, headers=headers)
