@@ -3,6 +3,7 @@ from requests import get
 import asyncio
 import json
 from pyrogram import filters
+import sys
 
 @app.on_message(filters.command("update", ".") & filters.me)
 async def update_command(_, m):
@@ -16,3 +17,5 @@ async def update_command(_, m):
         f.write(data)
     await asyncio.sleep(1)
     await m.edit("`Bot Güncellendi!`")
+    execl(sys.executable, sys.executable, *sys.argv)
+
