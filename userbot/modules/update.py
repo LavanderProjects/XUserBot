@@ -5,6 +5,7 @@ import json
 from pyrogram import filters
 import sys
 import os
+import subprocess
 @app.on_message(filters.command("update", ".") & filters.me)
 async def update_command(_, m):
   await m.edit("`Güncellemeler Kontrol Ediliyor!`")
@@ -17,5 +18,6 @@ async def update_command(_, m):
         f.write(data)
     await asyncio.sleep(1)
     await m.edit("`Bot Güncellendi!`")
-    os.execl(sys.executable, sys.executable, *sys.argv)
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
 
