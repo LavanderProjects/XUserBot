@@ -6,7 +6,7 @@ from userbot.cmdhelp import CmdHelp
 
 @Client.on_message(filters.command("alive", ".") &filters.me)
 async def al(_,m):
-  await m.edit("Bot is started Now!")
+  await m.edit("Bot is started!")
 
 
 
