@@ -4,7 +4,7 @@ import asyncio
 import json
 from pyrogram import filters
 
-@app.on_message(filters.command("update") & filters.me)
+@app.on_message(filters.command("update", ".") & filters.me)
 async def update_command(_, m):
   await m.edit("`Güncellemeler Kontrol Ediliyor!`")
   await asyncio.sleep(1)
