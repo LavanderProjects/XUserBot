@@ -23,4 +23,7 @@ async def update_command(_, m):
     url = "https://api.render.com/v1/services?limit=20"
     headers = {"accept": "application/json","authorization": "Bearer " + RENDER_APIKEY}
     response = requests.get(url, headers=headers)
+    servis = response.json()[0]["service"]
+    url = f"https://api.render.com/v1/services/{servis['id']}/restart"
+    response = requests.post(url, headers=headers)
     await m.edit(response.text)
