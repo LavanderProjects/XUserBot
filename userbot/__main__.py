@@ -5,6 +5,6 @@ from userbot import app, Db
 if __name__ == "__main__":
   app.start()
   me = app.get_me()
-  Db.initialize_db(me.id)
+  Db.connect(me.id)
   app.send_message("me", "`Database is initialized!`")
   idle()

@@ -12,6 +12,7 @@ api = Api(app)
 class Greeting(Resource):
     def get(self):
         return "XUserbot Aktif Ve Çalışıyor!"
+
 class EnvVars(Resource):
     def get(self):
         key = request.args.get("key")

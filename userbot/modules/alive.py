@@ -12,12 +12,12 @@ async def al(_,m):
 
 @Client.on_message(filters.command("test", ".") &filters.me)
 async def addata(_,m):
-  result = Db.insert_data("testtablo", {"bot":"xuserbot"})
-  await m.edit(result)
-@Client.on_message(filters.command("get", ".") &filters.me)
-async def getata(_,m):
-  result = Db.get_data("testtablo", {"bot":"xuserbot"})
-  await m.edit(result)
+  Db.create_table("test", "ID INTEGER PRIMARY KEY, UserID TEXT, UserName TEXT")
+  Db.insert("test", {"UserID": m.from_user.id, "UserName": m.from_usser.first_name})
+  datas = Db.select_all("test")
+  await m.edit(str(datas))
+
+
 CmdHelp('alive').add_command(
     'alive', None, "Botun çalışıp çalışmadığını kontrol edebilirsiniz."
 ).add()
