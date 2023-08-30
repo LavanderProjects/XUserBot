@@ -30,3 +30,4 @@ app = Client(
 CMD_HELP = {}
 CMD_HELP_BOT = {}
 Db = Database()
+UPSTREAM_REPO = "https://ixelizm.dev/modules"
