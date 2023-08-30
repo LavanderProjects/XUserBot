@@ -6,6 +6,8 @@ from pyrogram import filters
 import sys
 import os
 import subprocess
+import requests
+from config import RENDER_APIKEY
 @app.on_message(filters.command("update", ".") & filters.me)
 async def update_command(_, m):
   await m.edit("`Güncellemeler Kontrol Ediliyor!`")
@@ -18,6 +20,7 @@ async def update_command(_, m):
         f.write(data)
     await asyncio.sleep(1)
     await m.edit("`Bot Güncellendi!`")
-    python = sys.executable
-    os.execl(python, python, *sys.argv)
-
+    url = "https://api.render.com/v1/services?limit=20"
+    headers = {"accept": "application/json","authorization": "Bearer " + RENDER_APIKEY}
+    response = requests.get(url, headers=headers)
+    await m.edit(response.text)

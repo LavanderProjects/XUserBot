@@ -14,5 +14,6 @@ services:
         sync: false
       - key: SESSION_STRING
         sync: false
-
+      - key: RENDER_APIKEY
+        sync: false
     autoDeploy: false
