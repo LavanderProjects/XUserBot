@@ -16,7 +16,7 @@ async def update_command(_, m):
   if response.status_code == 200:
     await m.edit("`Repo Kontrolü Başarılı! Bot Güncelleniyor...`")
     for file, data in response.json().items():
-      with open("/userbot/modules/" + file + ".py", "w") as f:
+      with open("userbot/modules/" + file + ".py", "w") as f:
         f.write(data)
     await asyncio.sleep(1)
     await app.restart()
