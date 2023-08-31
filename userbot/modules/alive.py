@@ -12,9 +12,7 @@ async def al(_,m):
 
 @Client.on_message(filters.command("test", ".") &filters.me)
 async def addata(_,m):
-  Db.create_table("test", "ID INTEGER PRIMARY KEY, UserID TEXT, UserName TEXT")
-  Db.insert("test", {"UserID": m.from_user.id, "UserName": m.from_user.first_name})
-  datas = Db.select_all("test")
+  datas = Db.select_all("pmpermit")
   await m.edit(str(datas))
 
 
