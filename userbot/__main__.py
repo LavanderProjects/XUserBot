@@ -6,7 +6,7 @@ if __name__ == "__main__":
   app.start()
   me = app.get_me()
   Db.connect("x.sql")
-  for message in app.search_messages(BOTLOG, filter=enums.MessagesFilter.DOCUMENT):
+  for message in app.search_messages(int(BOTLOG), filter=enums.MessagesFilter.DOCUMENT):
     app.send_message("me", message.document.file_name)
 #    docs = message.download()
 #  with open(docs) as f:
