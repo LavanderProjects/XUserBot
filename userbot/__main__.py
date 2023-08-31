@@ -6,11 +6,11 @@ if __name__ == "__main__":
   app.start()
   me = app.get_me()
   Db.connect("x.sql")
-  for message in app.search_messages(int(BOTLOG), filter=enums.MessagesFilter.DOCUMENT):
-    if message.document.file_name == "x.json":
-      docs = message.download()
-      with open(docs) as f:
-        data = json.load(f)
-      Db.json2db(data)
-  app.send_message("me", "`Database is initialized!`")
+#  for message in app.search_messages(int(BOTLOG), filter=enums.MessagesFilter.DOCUMENT):
+#    if message.document.file_name == "x.json":
+#      docs = message.download()
+#      with open(docs) as f:
+#        data = json.load(f)
+  data = Db.db2json()
+  app.send_message("me", str(data))
   idle()
