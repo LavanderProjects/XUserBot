@@ -7,7 +7,7 @@ if __name__ == "__main__":
   me = app.get_me()
   Db.connect("x.sql")
   for message in app.search_messages(int(BOTLOG), filter=enums.MessagesFilter.DOCUMENT):
-    if message.document.file_name == "x.conf":
+    if message.document.file_name == "x.json":
       docs = message.download()
       with open(docs) as f:
         data = json.load(f)
