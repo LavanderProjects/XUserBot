@@ -379,6 +379,66 @@ async def unmute(client: Client, message: Message):
     
     return await message.edit_text(LANG['UNMUTE_SUCCESS'].format(user.first_name, user.id, message.chat.title))
 
+
+@Client.on_message(filters.command("pin", prefixes=".") & filters.me)
+async def pin(client: Client, message: Message):
+    if message.chat.type in [enums.ChatType.PRIVATE, enums.ChatType.BOT, enums.ChatType.CHANNEL]:
+        return await message.edit_text(LANG['NEED_GROUP'])
+
+    reply = message.reply_to_message
+    if not reply:
+        return await message.edit_text(LANG['NEED_REPLY'])
+    
+    try:
+        await client.pin_chat_message(message.chat.id, reply.id)
+    except Exception as e:
+        return await message.edit_text(LANG['PIN_FAILED'])
+    
+    return await message.edit_text(LANG['PIN_SUCCESS'].format(message.chat.title))
+
+@Client.on_message(filters.command("unpin", prefixes=".") & filters.me)
+async def unpin(client: Client, message: Message):
+    if message.chat.type in [enums.ChatType.PRIVATE, enums.ChatType.BOT, enums.ChatType.CHANNEL]:
+        return await message.edit_text(LANG['NEED_GROUP'])
+    
+    reply = message.reply_to_message
+    if not reply:
+        return await message.edit_text(LANG['NEED_REPLY'])
+    
+    try:
+        await client.unpin_chat_message(message.chat.id, reply.id)
+    except Exception as e:
+        return await message.edit_text(LANG['UNPIN_FAILED'])
+    
+    return await message.edit_text(LANG['UNPIN_SUCCESS'].format(message.chat.title))
+
+
+
+@Client.on_message(filters.command("admins", prefixes=".") & filters.me)
+async def admins(client: Client, message: Message):
+    if message.chat.type in [enums.ChatType.PRIVATE, enums.ChatType.BOT, enums.ChatType.CHANNEL]:
+        return await message.edit_text(LANG['NEED_GROUP'])
+    
+    text = LANG['ADMINS'].format(message.chat.title)
+
+    async for admin in client.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
+        text += f"\n**‣ {admin.user.mention} | **`{admin.user.id}`"
+    
+    return await message.edit_text(text)
+
+@Client.on_message(filters.command("bots", prefixes=".") & filters.me)
+async def bots(client: Client, message: Message):
+    if message.chat.type in [enums.ChatType.PRIVATE, enums.ChatType.BOT, enums.ChatType.CHANNEL]:
+        return await message.edit_text(LANG['NEED_GROUP'])
+    
+    text = LANG['BOTS'].format(message.chat.title)
+
+    async for bot in client.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.BOTS):
+        text += f"\n**‣ {bot.user.mention} | **`{bot.user.id}`"
+    
+    return await message.edit_text(text)
+
+
 CmdHelp("admin").add_command(
     'ekle', '<kullanıcı adı/id>', 'Belirtilen kullanıcıyı gruba ekler.'
 ).add_command(
@@ -399,4 +459,12 @@ CmdHelp("admin").add_command(
     'mute', '<kullanıcı adı/id>', 'Belirtilen kullanıcıyı susturur.'
 ).add_command(
     'unmute', '<kullanıcı adı/id>', 'Belirtilen kullanıcının susturmasını kaldırır.'
+).add_command(
+    'pin', '<yanıtlanan mesaj>', 'Belirtilen mesajı sabitler.'
+).add_command(
+    'unpin', '<yanıtlanan mesaj>', 'Belirtilen mesajın sabitlemesini kaldırır.'
+).add_command(
+    'admins', None, 'Grubun yöneticilerini gösterir.'
+).add_command(
+    'bots', None, 'Grubun botlarını gösterir.'
 ).add()
