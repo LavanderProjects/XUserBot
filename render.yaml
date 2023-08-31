@@ -16,4 +16,6 @@ services:
         sync: false
       - key: RENDER_APIKEY
         sync: false
+      - key: BOTLOG
+        sync: false
     autoDeploy: false
