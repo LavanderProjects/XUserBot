@@ -34,7 +34,13 @@
             "MUTE_FAILED": "⚠️ Kullanıcı susturulamadı.",
             "MUTE_SUCCESS": "✅ Kullanıcı susturuldu.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
             "UNMUTE_FAILED": "⚠️ Kullanıcının susturması kaldırılamadı.",
-            "UNMUTE_SUCCESS": "✅ Kullanıcının susturması kaldırıldı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`"
+            "UNMUTE_SUCCESS": "✅ Kullanıcının susturması kaldırıldı.\n\n👤 **{}**\n🪪 `{}`\n\n🪧 `{}`",
+            "PIN_FAILED": "⚠️ Mesaj sabitlenemedi.",
+            "PIN_SUCCESS": "✅ Mesaj sabitlendi.\n\n🪧 `{}`",
+            "UNPIN_FAILED": "⚠️ Mesajın sabitlemesi kaldırılamadı.",
+            "UNPIN_SUCCESS": "✅ Mesajın sabitlemesi kaldırıldı.\n\n🪧 `{}`",
+            "ADMINS": "👥 Yöneticiler | `{}`",
+            "BOTS": "🤖 Botlar | `{}`"
         }
     }
 }
