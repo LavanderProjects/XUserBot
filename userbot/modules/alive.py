@@ -10,12 +10,6 @@ async def al(_,m):
 
 
 
-@Client.on_message(filters.command("test", ".") &filters.me)
-async def addata(_,m):
-  datas = Db.select_all("pmpermit")
-  await m.edit(str(datas))
-
-
 CmdHelp('alive').add_command(
     'alive', None, "Botun çalışıp çalışmadığını kontrol edebilirsiniz."
 ).add()
