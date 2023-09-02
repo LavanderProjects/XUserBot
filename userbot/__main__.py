@@ -16,5 +16,5 @@ if __name__ == "__main__":
 
 {content}
 """
-    app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), "`Bot Başarıyla Güncellendi!`\n")
+    app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), text)
   idle()
