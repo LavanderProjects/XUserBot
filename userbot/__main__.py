@@ -2,16 +2,9 @@ from pyrogram import Client, idle, enums
 import json
 from userbot import app, Db
 from config import BOTLOG
+import sys
 if __name__ == "__main__":
   app.start()
-  me = app.get_me()
-  Db.connect("x.sql")
-  for message in app.search_messages(int(BOTLOG), filter=enums.MessagesFilter.DOCUMENT):
-    if message.document.file_name == "x.json":
-      docs = message.download()
-      with open(docs) as f:
-        data = json.load(f)
-      Db.json2db(data)
-  alls = Db.db2json()
-  app.send_message("me", str(alls))
+  if len(sys.argv) > 1:
+    app.edit_message_text(sys.argv[1], sys.argv[2], "`Bot Başarıyla Güncellendi!`")
   idle()
