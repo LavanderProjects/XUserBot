@@ -9,12 +9,6 @@ if __name__ == "__main__":
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
-    text = f"""
-`Bot Başarıyla Güncellendi!`
-
-**Değişenler:**
-
-{content}
-"""
+    text = "`Bot Başarıyla Güncellendi!`"
     app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), text)
   idle()
