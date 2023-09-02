@@ -6,5 +6,5 @@ import sys
 if __name__ == "__main__":
   app.start()
   if len(sys.argv) > 1:
-    app.edit_message_text(sys.argv[1], sys.argv[2], "`Bot Başarıyla Güncellendi!`")
+    app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), "`Bot Başarıyla Güncellendi!`")
   idle()

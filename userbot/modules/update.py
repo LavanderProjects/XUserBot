@@ -8,6 +8,8 @@ import os
 import subprocess
 import requests
 from config import RENDER_APIKEY
+
+
 @app.on_message(filters.command("update", ".") & filters.me)
 async def update_command(_, m):
   await m.edit("`Güncellemeler Kontrol Ediliyor!`")
@@ -18,5 +20,4 @@ async def update_command(_, m):
     for file, data in response.json().items():
       with open("userbot/modules/" + file + ".py", "w") as f:
         f.write(data)
-    await asyncio.sleep(1)
     os.execl(sys.executable, sys.executable, "-m", "userbot", str(m.chat.id), str(m.id))
