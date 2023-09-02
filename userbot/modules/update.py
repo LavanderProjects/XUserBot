@@ -19,4 +19,4 @@ async def update_command(_, m):
       with open("userbot/modules/" + file + ".py", "w") as f:
         f.write(data)
     await asyncio.sleep(1)
-    os.execl(sys.executable, sys.executable, "-m", f"userbot {m.chat.id} {m.id}")
+    os.execl(sys.executable, sys.executable, "-m", "userbot", str(m.chat.id), str(m.id))
