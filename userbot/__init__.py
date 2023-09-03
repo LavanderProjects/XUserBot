@@ -2,7 +2,7 @@ from pyrogram import Client
 from config import API_ID, API_HASH, SESSION_STRING
 import os
 from logging import basicConfig, getLogger, INFO, DEBUG
-from userbot.database import Database
+from userbot.database import JsonBase
 LOGS = getLogger(__name__)
 
 # Bot'un dili
@@ -29,5 +29,5 @@ app = Client(
 
 CMD_HELP = {}
 CMD_HELP_BOT = {}
-Db = Database()
+Db = JsonBase("database.json")
 UPSTREAM_REPO = "https://ixelizm.dev/modules"
