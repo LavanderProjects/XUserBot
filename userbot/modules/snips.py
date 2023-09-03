@@ -30,3 +30,12 @@ async def sniprem(_,m):
   snip = m.command[1]
   Db.delete_record("snips", "snip", snip)
   await m.edit("`Snip is removed!`")
+
+cmd = CmdHelp('snips')
+cmd.add_command(
+    'snips', None, "Kaydettiğiniz snipleri görebilirsiniz."
+)
+cmd.add_command("snip", cmd.getText("ARGS"), "Yanıtladığınız mesajı girdiğiniz değer ile kaydeder.")
+cmd.add_info("Kaydettiğiniz değerler ile snipleri çağırabilirsiniz.")
+
+cmd.add()

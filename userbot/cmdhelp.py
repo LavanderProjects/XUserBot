@@ -103,5 +103,5 @@ class CmdHelp:
             return 'veya'
         elif text == 'USERNAMES':
             return '<kullanıcı ad(lar)ı>'
-        
-        
+        elif text == "ARGS":
+            return "<değer>"
