@@ -12,7 +12,7 @@ async def snipwh(_,m):
 @Client.on_message(filters.command("snip", ".") &filters.me)
 async def snipadd(_,m):
   if m.reply_to_message:
-    copied_message = await m.copy("me")
+    copied_message = await m.reply_to_message.copy("me")
     data = {"snip": m.command[1], "message_id": copied_message.id}
     Db.insert_record("snips", data)
     await m.edit("`snip is saved!`")
