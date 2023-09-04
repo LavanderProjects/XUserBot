@@ -1,7 +1,7 @@
 from pyrogram import Client, idle, enums
 import json
 from userbot import app, Db
-from config import BOTLOG, DEFAULT_NAME
+from config import BOTLOG
 import sys
 import requests
 
