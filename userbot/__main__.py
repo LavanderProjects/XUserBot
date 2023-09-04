@@ -13,8 +13,6 @@ if __name__ == "__main__":
     content = resp.text
     text = "`Bot Başarıyla Güncellendi!`"
     app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), text)
-    Db.data["Settings"]["DEFAULT_NAME"] = me
-    Db.save_record()
-  Db.data["Settings"]["DEFAULT_NAME"] = me
-  Db.save_record()
+    Db.update_record("Settings", "id",1,{"id": 1, "DEFAULT_NAME": me})
+  Db.update_record("Settings", "id",1,{"id": 1, "DEFAULT_NAME": me})
   idle()
