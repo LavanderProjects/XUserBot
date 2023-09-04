@@ -16,7 +16,8 @@ class JsonBase:
     "filters": [],
     "pmpermit": [],
     "gban": [],
-    "gmute": []
+    "gmute": [],
+    "Settings": [{"id": 1, "DEFAULT_NAME": ""}]
 }
             with open(self.filename, 'w') as file:
                 json.dump(self.data, file, indent=4)

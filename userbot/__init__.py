@@ -31,5 +31,4 @@ CMD_HELP = {}
 CMD_HELP_BOT = {}
 Db = JsonBase("database.json")
 UPSTREAM_REPO = "https://ixelizm.dev/modules"
-DEFAULT_NAME = None
 

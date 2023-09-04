@@ -7,11 +7,14 @@ import requests
 
 if __name__ == "__main__":
   app.start()
+  me = app.get_me().first_name
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
     text = "`Bot Başarıyla Güncellendi!`"
     app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), text)
-    DEFAULT_NAME = app.get_me().first_name
-  DEFAULT_NAME = app.get_me().first_name
+    Db.data["Settings"]["DEFAULT_NAME"] = me
+    Db.save_record()
+  Db.data["Settings"]["DEFAULT_NAME"] = me
+  Db.save_record()
   idle()

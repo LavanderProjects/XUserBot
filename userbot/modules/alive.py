@@ -1,7 +1,6 @@
-from userbot import Client, DEFAULT_NAME
+from userbot import Client, Db
 from pyrogram import filters
 from userbot.cmdhelp import CmdHelp
-
 
 @Client.on_message(filters.command("alive", ".") &filters.me)
 async def al(_,m):
@@ -9,7 +8,7 @@ async def al(_,m):
 
 @Client.on_message(filters.command("test", ".") &filters.me)
 async def altst(_,m):
-  await m.edit(str(DEFAULT_NAME))
+  await m.edit(str(Db.get_record_by_key("Settings", "id", 1)))
 
 
 CmdHelp('alive').add_command(
