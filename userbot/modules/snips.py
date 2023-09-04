@@ -1,7 +1,7 @@
 from userbot import Client
 from pyrogram import filters
 from userbot import Db
-
+from userbot.cmdhelp import CmdHelp
 
 @Client.on_message(filters.regex(r"\$\w+") &filters.me)
 async def snipwh(_,m):
