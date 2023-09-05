@@ -1,7 +1,8 @@
 from pyrogram import Client, idle, enums
 import json
 from userbot import app, Db
-from config import BOTLOG, RENDER_APIKEY, UPSTREAM_REPO
+from config import BOTLOG, RENDER_APIKEY
+from userbot import UPSTREAM_REPO
 import sys
 import requests
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
