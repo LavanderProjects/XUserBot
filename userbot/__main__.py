@@ -1,11 +1,13 @@
 from pyrogram import Client, idle, enums
 import json
 from userbot import app, Db
-from config import BOTLOG, RENDER_APIKEY
+from config import  RENDER_APIKEY
 from userbot import UPSTREAM_REPO
 import sys
 import requests
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from random import choice
+
 
 async def keep_alive():
   url = "https://api.render.com/v1/services?limit=20"
@@ -34,6 +36,7 @@ scheduler = AsyncIOScheduler()
 scheduler.add_job(keep_alive, "interval", seconds=5)
 #scheduler.add_job(auto_deploy, "interval", seconds=5)
 if __name__ == "__main__":
+  
   app.start()
   me = app.get_me().first_name
 

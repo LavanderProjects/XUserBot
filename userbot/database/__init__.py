@@ -17,6 +17,7 @@ class JsonBase:
     "pmpermit": [],
     "gban": [],
     "gmute": [],
+    "messages": [],
     "Settings": [{"id": 1, "DEFAULT_NAME": ""}]
 }
             with open(self.filename, 'w') as file:
