@@ -15,7 +15,7 @@ LANGUAGE = os.environ.get("LANGUAGE", "DEFAULT").upper()
 
 WORKTIME =time.time ()
 
-X_VERSION ="v0.1"
+X_VERSION ="v1.0"
 
 
 if not LANGUAGE in ["EN", "TR", "AZ", "UZ", "DEFAULT"]:

@@ -19,7 +19,6 @@ async def keep_alive():
 
   response = requests.get(url, headers=headers)
   requests.get(response.json()[0]["service"]["serviceDetails"]["url"])
-  await app.send_message("me", "istek gönderildi!")
 
 #async def auto_deploy():
 #  response = get(UPSTREAM_REPO)
@@ -36,7 +35,6 @@ scheduler = AsyncIOScheduler()
 scheduler.add_job(keep_alive, "interval", seconds=5)
 #scheduler.add_job(auto_deploy, "interval", seconds=5)
 if __name__ == "__main__":
-  
   app.start()
   me = app.get_me().first_name
 
