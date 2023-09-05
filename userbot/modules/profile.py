@@ -5,7 +5,6 @@ from userbot.cmdhelp import CmdHelp
 
 @Client.on_message(filters.command("profil", ".") & filters.me)
 async def profil(client: Client, message: Message):
-s  
     args = message.command
     if message.reply_to_message:
         user = await client.get_users(message.reply_to_message.from_user.id)
