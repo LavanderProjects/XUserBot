@@ -37,5 +37,4 @@ cmd.add_command(
 )
 cmd.add_command("snip", cmd.getText("ARGS"), "Yanıtladığınız mesajı girdiğiniz değer ile kaydeder.")
 cmd.add_info("Kaydettiğiniz değerler ile snipleri çağırabilirsiniz.")
-
 cmd.add()
