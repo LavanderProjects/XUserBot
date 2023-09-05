@@ -41,6 +41,16 @@
             "UNPIN_SUCCESS": "✅ Mesajın sabitlemesi kaldırıldı.\n\n🪧 `{}`",
             "ADMINS": "👥 Yöneticiler | `{}`",
             "BOTS": "🤖 Botlar | `{}`"
+        },
+        "degistir": {
+            "SETTED_MEDIA": "için medyanız ayarlandı.",
+            "SETTED_REPLY": "için mesajınız ayarlandı.",
+            "SUCCESS_DELETED": "`Plugin mesajı başarıyla silindi.`",
+            "ERROR_DELETED": "Plugin mesajı silinemedi.** Hata",
+            "NOT_FOUND": "**Bilinmeyen plugin.** Mesajını silebileceğiniz pluginler",
+            "USAGE": "**Değiştir, bottaki plugin-mesajlarını değiştirmenize yarar.**\nÖrnek Kullanım: `.değiştir afk \"Şu an burda değilim... Belki hiç gelmem\"`\nPlugin-mesajı silme: `.değiştir afk`\nDeğiştirebileceğiniz plugin-mesajları (şu anlık): `afk/alive/pm/kickme/dızcı/ban/mute/approve/disapprove/block`",
+            "CANNOT_EMPTY": "Plugin mesajı boş olamaz.",
+            "SETTED": "Plugin(`{plu}`) için mesajınız(`{msj}`) ayarlandı."
         }
     }
 }
