@@ -13,7 +13,7 @@ Db = JsonBase("database.json")
 # Bot'un dili
 LANGUAGE = os.environ.get("LANGUAGE", "DEFAULT").upper()
 
-WORKTIME =time.time ()
+WORKTIME = time.time()
 
 X_VERSION ="v1.0"
 
