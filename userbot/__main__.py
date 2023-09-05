@@ -16,7 +16,7 @@ async def keep_alive():
   }
 
   response = requests.get(url, headers=headers)
-  requests.get(response.json()[0]["service"]["url"])
+  requests.get(response.json()[0]["service"]["serviceDetails"]["url"])
   await app.send_message("me", "istek gönderildi!")
 
 #async def auto_deploy():
