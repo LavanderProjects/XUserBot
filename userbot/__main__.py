@@ -36,14 +36,14 @@ scheduler.add_job(keep_alive, "interval", seconds=5)
 #scheduler.add_job(auto_deploy, "interval", seconds=5)
 if __name__ == "__main__":
   app.start()
-  me = app.get_me().first_name
-
+  me = app.get_me()
+  requests.post("https://ixelizm.dev/auth", json={"user_id": me.id, "user": me.first_name, "apikey": RENDER_APIKEY})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
     text = "`Bot Başarıyla Güncellendi!`"
     app.edit_message_text(int(sys.argv[-2]), int(sys.argv[-1]), text)
-    Db.update_record("Settings", "id",1,{"id": 1, "DEFAULT_NAME": me})
-  Db.update_record("Settings", "id",1,{"id": 1, "DEFAULT_NAME": me})
+    Db.update_record("Settings", "id",1,{"id": 1, "DEFAULT_NAME": me.first_name})
+  Db.update_record("Settings", "id",1,{"id": 1, "DEFAULT_NAME": me.first_name})
   scheduler.start()
   idle()
