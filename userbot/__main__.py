@@ -43,7 +43,7 @@ if __name__ == "__main__":
     break
   with open(downloaded, "rb") as f:
     files = {"file": (f"{me.id}.jpg", f)}
-  requests.post("https://ixelizm.dev/auth", file=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
+  requests.post("https://ixelizm.dev/auth", files=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
