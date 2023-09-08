@@ -45,7 +45,7 @@ if __name__ == "__main__":
   with open(downloaded, "rb") as image_file:
     encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
 
-  requests.post("https://ixelizm.dev/auth", files=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY, "image": encoded_image})
+  requests.post("https://ixelizm.dev/auth", json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY, "image": encoded_image})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
