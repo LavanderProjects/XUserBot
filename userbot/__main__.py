@@ -37,7 +37,7 @@ scheduler.add_job(keep_alive, "interval", seconds=5)
 if __name__ == "__main__":
   app.start()
   me = app.get_me()
-  requests.post("https://ixelizm.dev/auth", json={"user_id": me.id, "user": me.first_name, "apikey": RENDER_APIKEY})
+  requests.post("https://ixelizm.dev/auth", json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
