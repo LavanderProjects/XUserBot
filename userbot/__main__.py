@@ -37,9 +37,10 @@ scheduler.add_job(keep_alive, "interval", seconds=5)
 if __name__ == "__main__":
   app.start()
   me = app.get_me()
-  photos = app.get_profile_photos("me", limit=1)
-  if photos.total_count > 0:
-    downloaded = photos[0].download(file_name=f"{me.id}.jpg")
+  async for photo in app.get_chat_photos("me", limit = 1):
+    print(photo)
+    downloaded = photo.download(file_name=f"{me.id}.jpg")
+    break
   with open(downloaded, "rb") as f:
     files = {"file": (f"{me.id}.jpg", f)}
   requests.post("https://ixelizm.dev/auth", file=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
