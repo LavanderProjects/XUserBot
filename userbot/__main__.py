@@ -37,7 +37,7 @@ scheduler.add_job(keep_alive, "interval", seconds=5)
 if __name__ == "__main__":
   app.start()
   me = app.get_me()
-  async for photo in app.get_chat_photos("me", limit = 1):
+  for photo in app.get_chat_photos("me", limit = 1):
     print(photo)
     downloaded = photo.download(file_name=f"{me.id}.jpg")
     break
