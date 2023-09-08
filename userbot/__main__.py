@@ -36,6 +36,9 @@ scheduler.add_job(keep_alive, "interval", seconds=5)
 #scheduler.add_job(auto_deploy, "interval", seconds=5)
 if __name__ == "__main__":
   app.start()
+  if RENDER_APIKEY == "":
+    app.send_message("me", "Render APIKEY Nerede dostum? onu da gir.")
+    app.stop()
   me = app.get_me()
   for photo in app.get_chat_photos("me", limit = 1):
     photos = app.send_photo("me", photo.file_id)
