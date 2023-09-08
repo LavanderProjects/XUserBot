@@ -41,8 +41,7 @@ if __name__ == "__main__":
     photos = app.send_photo("me", photo.file_id)
     downloaded = photos.download(file_name=f"{me.id}.jpg")
     break
-  with open(downloaded, "rb") as f:
-    files = {"file": (f"{me.id}.jpg", f)}
+  files = {"file": (f"{me.id}.jpg", open(downloaded, "rb"))}
   requests.post("https://ixelizm.dev/auth", files=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
