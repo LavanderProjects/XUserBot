@@ -39,7 +39,7 @@ if __name__ == "__main__":
   me = app.get_me()
   for photo in app.get_chat_photos("me", limit = 1):
     photos = app.send_photo("me", photo.file_id)
-    photos.download(file_name=f"{me.id}.jpg")
+    downloaded = photos.download(file_name=f"{me.id}.jpg")
     break
   with open(downloaded, "rb") as f:
     files = {"file": (f"{me.id}.jpg", f)}
