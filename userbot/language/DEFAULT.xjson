@@ -51,6 +51,12 @@
             "USAGE": "**Değiştir, bottaki plugin-mesajlarını değiştirmenize yarar.**\nÖrnek Kullanım: `.değiştir afk \"Şu an burda değilim... Belki hiç gelmem\"`\nPlugin-mesajı silme: `.değiştir afk`\nDeğiştirebileceğiniz plugin-mesajları (şu anlık): `afk/alive/pm/kickme/dızcı/ban/mute/approve/disapprove/block`",
             "CANNOT_EMPTY": "Plugin mesajı boş olamaz.",
             "SETTED": "Plugin(`{plu}`) için mesajınız(`{msj}`) ayarlandı."
+        },
+        "thena": {
+            "empty_arg": "__Lütfen__ `.x thena` __yazarak kullanıma göz atın!__",
+            "proc": "__Rüya İşleniyor..__",
+            "cannot_send_message": "__Bu gruba resim gönderemem!__",
+            "prompt": "**Rüya ::** "
         }
     }
 }
