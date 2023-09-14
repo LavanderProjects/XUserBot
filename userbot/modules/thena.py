@@ -21,12 +21,22 @@ async def createimage(client, message):
   try:
     args = message.text.split(" ", 1)[1].lower() if len(message.command) > 1 else ""
   except:
-    return await message.edit_text(LANG["empty_arg"])
+    try:
+      return await message.edit_text(LANG["empty_arg"])
+    except:
+      return;
 
   if args == "" or args == " ":
-    return await message.edit_text(LANG["empty_arg"])
+    try:
+      return await message.edit_text(LANG["empty_arg"])
+    except:
+      return;
 
-  await message.edit_text(LANG["proc"])
+  try:
+    await message.edit_text(LANG["proc"])
+  except:
+    True
+    
   def adjust_aspect_ratio(word, target_width, target_height):
     current_width, current_height = map(int, word.split(':'))
     
@@ -98,7 +108,7 @@ async def createimage(client, message):
     model_name = "v5"
   elif ("-v4" in args) or ("-v 4" in args) or ("- v 4" in args) or ("- v4" in args):
     model_name = "v4"
-  elif ("-vanime" in args) or ("-v anime" in args) or ("- v anime" in args) or ("- vanime" in args):
+  elif ("-anime" in args) or ("- anime" in args):
     model_name = "anime"
   else:
     model_name = "v5"
