@@ -5,3 +5,5 @@ tgcrypto
 cryptography
 requests
 apscheduler
+aiohttp
+aiofiles

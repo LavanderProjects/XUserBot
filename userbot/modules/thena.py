@@ -5,7 +5,9 @@ import requests
 import io
 import base64
 from userbot.cmdhelp import CmdHelp
-
+import random
+import aiohttp
+import aiofiles
 
 from userbot.language import get_value
 LANG = get_value("thena")
@@ -14,10 +16,10 @@ LANG = get_value("thena")
 async def createimage(client, message):
 
   try:
-    await client.join_chat("https://t.me/ThenaAI")
+    await client.join_chat("ThenaAI")
   except:
     True
-
+    
   try:
     args = message.text.split(" ", 1)[1].lower() if len(message.command) > 1 else ""
   except:
@@ -126,26 +128,29 @@ async def createimage(client, message):
   thenaData = response.json()
 
   if thenaData["status"] == 200:
-    def base64_to_binaryio(base64_data):
+    
+    async def base64_to_file_async(base64_data, file_path):
       binary_data = base64.b64decode(base64_data)
-      return io.BytesIO(binary_data)
-
-
+      async with aiofiles.open(file_path, "wb") as file:
+        await file.write(binary_data)
+    
     base64_data = thenaData["image"]
+    file_path = "./Thena.png"
+    
+    await base64_to_file_async(base64_data, file_path)
 
-    binaryio_data = base64_to_binaryio(base64_data)
+    try:
+      await client.delete_messages(chat_id=message.chat.id, message_ids=message.id)
+    except:
+      True
 
-    with open("./Thena.png", "wb") as file:
-      file.write(binaryio_data.getvalue())
-
+    try:
+      return await client.send_photo(chat_id=message.chat.id, photo=file_path, caption="[" + thenaData["content"] + "](https://t.me/ThenaAIBot)\n" + LANG["prompt"] + args, has_spoiler=True)
+    except:
       try:
-        await client.delete_messages(chat_id=message.chat.id, message_ids=message.id)
-        return await client.send_photo(chat_id=message.chat.id, photo="./Thena.png", caption="[" + thenaData["content"] + "](https://t.me/ThenaAIBot)\n" + LANG["prompt"] + args, has_spoiler=True)
+        return await message.edit_text(LANG["cannot_send_message"])
       except:
-        try:
-          return await message.edit_text(LANG["cannot_send_message"])
-        except:
-          return
+        return
 
   else:
     try:
@@ -155,8 +160,8 @@ async def createimage(client, message):
 
 
 CmdHelp('thena').add_command(
-  'thena', '<prompt>', 'Yazdığınız metni t.me/ThenaAIBot ile resme çevirir.', "thena big river in middle of the city purple sunset,cinematic light,hdr10,chiaroscuro lighting,ambient occlusion tracing 2:2"
+  'thena', '<prompt>', 'Yazdığınız metni t.me/ThenaAIBot ile resme çevirir.', "thena double exposure, portrait of woman, galaxies and starts on head with double exposure, digital art -v4 3:4"
 ).add_info(
-  "\n**Desteklenen Çözünürlükler:** __Promptunuzun sonuna__ `9:16`, `2:2`, `3:4`, `2:1` __gibi ifadeler eklerseniz maximum 1024x1024 olmak üzere farklı çözünürlükler elde edersiniz. Birşey yazmadığınız takdirde 1024x1024 olacaktır.__" + 
+  "\n**Desteklenen Çözünürlükler:** __Promptunuzun sonuna__ `9:16`, `21:9`, `3:4`, `2:1` __gibi ifadeler eklerseniz maximum 1024x1024 olmak üzere farklı çözünürlükler elde edersiniz. Birşey yazmadığınız takdirde 1024x1024 olacaktır.__" + 
   "\n**Desteklenen Modeller:** __Promptunuzun sonuna__ `-v5`, `-v4` veya `-anime` __koymanız halinde seçili model çalışacaktır. Herhangi bir model belirtilmezse varsayılan olarak V5 kullanılır.__"
 ).add()
