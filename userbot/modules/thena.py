@@ -12,7 +12,16 @@ LANG = get_value("thena")
 
 @app.on_message(filters.command("thena", ".") & filters.me)
 async def createimage(client, message):
-  args = message.text.split(" ", 1)[1].lower() if len(message.command) > 1 else ""
+
+  try:
+    await client.join_chat("https://t.me/ThenaAI")
+  except:
+    True
+
+  try:
+    args = message.text.split(" ", 1)[1].lower() if len(message.command) > 1 else ""
+  except:
+    return await message.edit_text(LANG["empty_arg"])
 
   if args == "" or args == " ":
     return await message.edit_text(LANG["empty_arg"])
@@ -81,12 +90,26 @@ async def createimage(client, message):
       if fixed_height > 1024:
         fixed_height = 1024
 
-        
+      if fixed_height == fixed_width:
+        fixed_width = 768
+        fixed_height = 768
+  
+  if ("-v5" in args) or ("-v 5" in args) or ("- v 5" in args) or ("- v5" in args):
+    model_name = "v5"
+  elif ("-v4" in args) or ("-v 4" in args) or ("- v 4" in args) or ("- v4" in args):
+    model_name = "v4"
+  elif ("-vanime" in args) or ("-v anime" in args) or ("- v anime" in args) or ("- vanime" in args):
+    model_name = "anime"
+  else:
+    model_name = "v5"
+
+
   url = "https://imaginethena-phaticusthiccy.koyeb.app/create_image_thena_v5"
   data = {
       "prompt": args,
       "width": fixed_width,
-      "height": fixed_height
+      "height": fixed_height,
+      "model": model_name
   }
   
   response = requests.post(url, json=data)
@@ -124,5 +147,6 @@ async def createimage(client, message):
 CmdHelp('thena').add_command(
   'thena', '<prompt>', 'Yazdığınız metni t.me/ThenaAIBot ile resme çevirir.', "thena big river in middle of the city purple sunset,cinematic light,hdr10,chiaroscuro lighting,ambient occlusion tracing 2:2"
 ).add_info(
-  "**Desteklenen Çözünürlükler:** __Promptunuzun sonuna__ `9:16`, `2:2`, `3:4`, `2:1` __gibi ifadeler eklerseniz maximum 1024x1024 olmak üzere farklı çözünürlükler elde edersiniz. Birşey yazmadığınız takdirde 1024x1024 olacaktır.__"
+  "\n**Desteklenen Çözünürlükler:** __Promptunuzun sonuna__ `9:16`, `2:2`, `3:4`, `2:1` __gibi ifadeler eklerseniz maximum 1024x1024 olmak üzere farklı çözünürlükler elde edersiniz. Birşey yazmadığınız takdirde 1024x1024 olacaktır.__" + 
+  "\n**Desteklenen Modeller:** __Promptunuzun sonuna__ `-v5`, `-v4` veya `-anime` __koymanız halinde seçili model çalışacaktır. Herhangi bir model belirtilmezse varsayılan olarak V5 kullanılır.__"
 ).add()
